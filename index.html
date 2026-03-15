@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sound Test</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23ededed' d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%230a0a0a' d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono&display=swap" rel="stylesheet">
@@ -16,6 +16,15 @@
       --border: #262626;
       --accent: #fff;
       --accent-dim: #404040;
+    }
+
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --fg: #0a0a0a;
+      --fg-dim: #737373;
+      --border: #e5e5e5;
+      --accent: #000;
+      --accent-dim: #cccccc;
     }
 
     * {
@@ -39,8 +48,27 @@
       font-size: 14px;
       font-weight: 500;
       color: var(--fg-dim);
-      margin-bottom: 48px;
+      margin-bottom: 24px;
       letter-spacing: 0.5px;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--fg-dim);
+      padding: 8px 12px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--fg-dim);
+      color: var(--fg);
     }
 
     .grid {
@@ -225,6 +253,7 @@
   </style>
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">Light</button>
   <h1>Sound Test</h1>
 
   <div class="grid">
@@ -561,6 +590,18 @@
     })();
 
     window.soundTest = soundTest;
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const btn = document.querySelector('.theme-toggle');
+      if (html.getAttribute('data-theme') === 'light') {
+        html.removeAttribute('data-theme');
+        btn.textContent = 'Light';
+      } else {
+        html.setAttribute('data-theme', 'light');
+        btn.textContent = 'Dark';
+      }
+    }
   </script>
 </body>
 </html>
