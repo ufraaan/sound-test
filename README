@@ -1,0 +1,11 @@
+sound test
+
+a browser-based audio testing tool for checking speakers, headphones, and microphones. built with svelte 5 and the [web audio api](https://www.w3.org/TR/webaudio-1.1/).
+
+what you can do:
+- figure out if you've got the left earbud in your right ear again.
+- test if your speakers are wired correctly with a polarity check.
+- see a live volume meter from your microphone.
+- sweep from 20 hz to 20 khz to test your speaker's frequency range.
+
+i built this because i keep trying to shove the wrong earbud in the wrong ear like an animal.
